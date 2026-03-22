@@ -1,71 +1,141 @@
-# why-code-exists README
+# 🚀 Why Code Exists — VS Code Extension
 
-This is the README for your extension "why-code-exists". After writing up a brief description, we recommend including the following sections.
+## 📌 Overview
 
-## Features
+**Why Code Exists** is a VS Code extension that helps developers understand not just *what* code does, but *why it was written*.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+When working in a codebase, especially a large or unfamiliar one, developers often struggle to understand the reasoning behind certain implementations. This tool bridges that gap by combining Git history with AI to provide meaningful context.
 
 ---
 
-## Following extension guidelines
+## 🧠 What It Does
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+* Allows developers to select any line of code
+* Extracts Git information:
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+  * Author and timestamp using `git blame`
+  * Code evolution using `git log -L`
+* Sends this context along with the selected code to an AI model
+* Generates a structured explanation of:
 
-## Working with Markdown
+  * Why the code was written
+  * What problem it solves
+  * Risks or improvements
+  * Who wrote it and when
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+---
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+## ❗ Problem It Solves
 
-## For more information
+Most tools and editors explain *what code does*, but they fail to explain:
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+* Why a specific logic exists
+* Why certain decisions were made
+* What historical context led to the current implementation
 
-**Enjoy!**
+This extension solves that by combining:
+
+* Version control intelligence (Git)
+* AI reasoning
+
+👉 Result: Faster onboarding, better understanding, and improved decision-making for developers.
+
+---
+
+## ⚙️ How to Install & Run from Source
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd why-code-exists
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Compile the extension
+
+```bash
+npm run compile
+```
+
+### 4. Run the extension
+
+* Open the project in VS Code
+* Press `F5`
+* A new **Extension Development Host** window will open
+
+---
+
+## 🧪 How to Use
+
+1. Open any file inside a Git repository
+2. Select a line or block of code
+3. Right-click → **Explain Why Code Exists**
+
+The extension will analyze the code and display results in a structured UI.
+
+---
+
+## ⚙️ Configuration
+
+Set your OpenRouter API key:
+
+### VS Code Settings
+
+* Open Settings (`Ctrl + ,`)
+* Search: **Why Code Exists**
+* Add:
+
+  * API Key
+  * Model (e.g., `openai/gpt-4o-mini`)
+
+Note:- Free modal support also available from open router  
+
+---
+
+## 🧩 Hardest Problem I Faced
+
+While building the extension, I initially displayed the AI output using VS Code’s popup (`showInformationMessage`).
+
+However, this created a major usability issue:
+
+* Long responses were getting truncated
+* The content was not readable
+* Important context was being lost
+
+### ✅ Solution
+
+I replaced the popup with a **Webview Panel**, which:
+
+* Displays full content without truncation
+* Supports structured UI
+* Provides a much better developer experience
+
+This change significantly improved both usability and presentation of the results.
+
+---
+
+## 🤖 LLM Conversation
+   https://chatgpt.com/share/69bfa33f-a2f0-8002-9e1b-5b2c624e3127
+---
+
+## 🚀 What I Would Do Next
+
+With more time, I would enhance the extension by:
+
+* Implementing caching for faster responses
+* Improving UI with richer components
+
+---
+
+## 💡 Key Insight
+
+> Most tools explain *what* code does.
+> This extension explains *why it exists.*
+
+---
