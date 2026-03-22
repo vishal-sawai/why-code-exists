@@ -18,6 +18,15 @@
         "title": "Explain Why Code Exists"
       }
     ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "why-code-exists.explainCode",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ]
+    },
     "configuration": {
       "title": "Why Code Exists",
       "properties": {
@@ -59,15 +68,6 @@
     "npm-run-all": "^4.1.5",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1"
-  },
-  "menus": {
-    "editor/context": [
-      {
-        "command": "why-code-exists.explainCode",
-        "when": "editorHasSelection",
-        "group": "navigation"
-      }
-    ]
   },
   "dependencies": {
     "node-fetch": "^3.3.2"
